@@ -1,0 +1,11 @@
+FROM ubuntu:20.04
+ENV PACKSDIR=/debsdir
+RUN echo "Acquire::Languages "none";" > /etc/apt/apt.conf.d/99translations
+RUN apt-get update && apt-get install -y \
+  dpkg-dev \
+  && rm -rf /var/lib/apt/lists/*
+RUN mkdir -p $PACKSDIR
+RUN chown -Rv _apt:root $PACKSDIR
+COPY packages.sh /
+WORKDIR $PACKSDIR
+ENTRYPOINT ["/packages.sh"]
