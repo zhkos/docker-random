@@ -1,4 +1,4 @@
-This dockerfile is downloading packages for debian-based systems.
+This dockerfile downloads packages for debian-based systems.
 It creates a local repository with dpkg-dev so that you can install packages without the Internet.
 
 How to use:
